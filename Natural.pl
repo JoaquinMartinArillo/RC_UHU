@@ -33,7 +33,7 @@ COSAS DE PROLOG
 	Si quiero poner N-1, "N-1" no lo entiende, hay que poner "N2 is N-1" y usar la variable N2
 	
 - .pl es la extension de Prolog
-- SWI-Prolog es el interprete de Prolog
+- SWI-Prolog es el interprete de Prolog -> Para abrir un archivo: File -> Consult
 */
 
 natural(1).
