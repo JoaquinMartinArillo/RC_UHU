@@ -1,0 +1,30 @@
+/* Tu mejor amigo e va ha casar y quiere que le planifique a sus invitado en
+mesas redondas y que esten contentos:
+Esteban, Gustavo, Jaime, Malena y Valeria
+
+- Gustavo es hablador
+- Valeria tmb
+- A Esteban le gusta Malena
+- A Malena le gusta Esteban
+- A Gustavo le gusta Valeria (pero no en viceversa)
+
+Las personas que se gustan se pueden sentar al lado
+La gente que habla se sienta con cualquiera
+NO juntar a personas que no se gustan entre si 
+
+1. Definir chatty para los habladores
+2. Crear una regla para likes
+
+*/
+
+/* Regla del hablador */
+chatty(gustavo).
+chatty(valeria).
+
+/* Regla del gusto */
+likes(esteban, malena). /* A Esteban le gusta Malena */
+likes(malena, esteban). /* A Malena le gusta Esteban */
+likes(gustavo, valeria). /* A Gustavo le gusta Valeria */
+
+/* Regla para juntar en la mesa */
+pairing (malena, esteban). /* Podemos juntar a Malena y Esteban */ 
