@@ -9,4 +9,6 @@
 	maplist(dif(1), [6,2,3,4,5]). -> Comprueba que todos los numeros del vector son distintos de 1 (true)
 	maplist(dif(1), [1,2,3,4,5]). -> Comprueba que todos los numeros del vector son distintos de 1 (false)
 
-- Inducción Matemática aplicado a cualquier cosa
+- Para quitar un elemento de una lista usamos: "|"
+
+*Siempre declarar las restricciones antes que las llamadas recursivas
