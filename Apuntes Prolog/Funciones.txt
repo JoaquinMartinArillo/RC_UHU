@@ -1,0 +1,12 @@
+- Declaracion de una lista:
+	Lista = [1,2,3,4]
+		[a,[],2,] -> Pueden ser de distinto tipo
+		[] -> Lista vacía 
+
+- dif(x,y) nos dice si los numeros x e y son diferentes
+
+- maplist(...) aplica una funcion a todos los elementos de una lista
+	maplist(dif(1), [6,2,3,4,5]). -> Comprueba que todos los numeros del vector son distintos de 1 (true)
+	maplist(dif(1), [1,2,3,4,5]). -> Comprueba que todos los numeros del vector son distintos de 1 (false)
+
+- Inducción Matemática aplicado a cualquier cosa

@@ -1,0 +1,20 @@
+Inducción Matemática
+
+Quiero probrar si el programa P funciona con todos los elementos del conjunto S.
+
+Necesitamos que los elementos de S sean ordenables:
+	- Existe un elemento mas pequeño que llamaremos n0.
+	
+Para todo par de elementos de S puedo saber si n1 es menor que n2.
+
+Naturales
+n0=1, 4 < 5? -> Si
+
+Listas
+n0=[], [_] < [_,_] ? -> Si
+
+Arboles y grafos 
+n0= vacio, podemos decir que si segun el numero de nodos 
+
+1) P(n0): La propiedad para el primer elemento es verdad
+2) P(n-1) -> P(n): Si P(n-1) es cierto, P(n) tambien 
