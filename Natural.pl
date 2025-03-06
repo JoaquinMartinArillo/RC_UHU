@@ -36,7 +36,25 @@ COSAS DE PROLOG
 - SWI-Prolog es el interprete de Prolog -> Para abrir un archivo: File -> Consult
 */
 
+% Primer elemento
 natural(1).
 
 % Si natural(N-1) -> natural(N)
 natural(N):- N > 1, N2 is N-1, natural(N2).
+
+
+/* SECUENCIA DEL PROGRAMA
+natural(5).
+  5? -> 4? -> 3? -> 2? -> 1?
+  Si <- Si <- Si <- Si <- Si
+  Primero le preguntamos al 5 y como la regla nos dice que si el anterior lo es n tmb lo sera, le preguntamos al anterior.
+  Esto se repite hasta llegar al primero (1) que si es, por lo que el siguiente tmb (asi hasta el 5).
+
+natural(4.5)
+  4.5? -> 3.5? -> 2.5? -> 1.5? -> 0.5?
+  No   <- No   <- No   <- No   <- No
+  Vuelve a pasar lo mismo solo que al llegar al 0.5, ni es el primero ni es mayor al primero => No
+
+
+
+
