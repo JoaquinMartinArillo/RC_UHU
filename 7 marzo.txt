@@ -1,0 +1,74 @@
+
+/* Lógica de Primer Orden */
+
+	chatty(gustavo).
+
+/* Lógica de predicado */
+
+	chatty_gustavo
+
+/* Clausula de Horn */
+	Tenemos terminos separados por AND ('/\') y un solo termino a la derecha
+
+	- a /\ b -> c (Es una clausula Horn)
+	
+	- a \/ b -> c (No es una clausula de Horn porque esta separado por OR '\/')
+		SOLUCION: Una expresion equivalente es expresarlo en 2 reglas: a -> c
+																	   b -> c
+	
+	- a -> b /\ c (No es una clausula Horn porque hay dos terminos a la derecha)
+		TRADUCCION: a -> b
+					a -> c
+					
+	- a -> b \/ c (No es una clausula Horn ya que no es una solución determinada)
+
+
+/* Hipotesis del mundo cerrado -> TODO lo que yo no diga que es verdad se interpretará como falso */
+
+/* VARIABLES */ 
+	- Variables libres -> Aquellas a las que no se le ha asignado un valor
+	- Variables instanciadas -> Aquellas que ya tienen un valor
+	- Variable anonima -> Variable que puede ser cualquier cosa (Se declara con '_')
+	
+/* CONCEPTO DE UNIFICACION */
+	Sigue el concepto de induccion matematica.
+	Dos terminos unifican si:
+		1. No hay variables libres -> Unifican si los terminos son idénticos.
+			Terminos identicos -> Cuando lo de la izq es EXACTAMENTE IGUAL que lo de la derecha.
+				1 == 1. true
+				2 == 1 + 1. FALSE
+				(1 + 1) == 1 + 1. true 
+				1 + (1 + 1) == 1 + 1 + 1. FALSE (Porque coge primero el parentesis aunque no lo calcule y asi tienen estructuras diferentes)
+				(1 + 1) + 1 == 1 + 1 + 1. true
+				+(1,1) == 1 + 1. true (Notacion prefija == Notacion infija. Basicamente son dos formas de poner la suma)
+				
+				X = 1+1. (Guarda la estructura)
+					X = 1+1, Y is X. nos dará X = 1+1, Y = 2
+
+	
+	Caso Base ->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
