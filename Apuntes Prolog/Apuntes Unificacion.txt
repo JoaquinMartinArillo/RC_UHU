@@ -46,7 +46,8 @@
 					X = 1+1, Y is X. nos dará X = 1+1, Y = 2
 
 	
-	Caso Base ->
+	Caso Base -> Sin variable -> Las estructuras son identicas
+	Con variable -> Buscamos poner algo en la variable que haga que las estructuras sean identicas
 
 
 
