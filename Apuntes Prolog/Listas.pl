@@ -50,7 +50,7 @@ my_reverse(?Lista, ?Resultado) es cierto si resultado unifica con una lista que 
 */
 
 my_reverse([], []).
-my_reverse([Cabeza|Resto], R2):- my_reverse(Resto, R), // Si fuese cierto en R tendriamos Resto en orden inverso
+my_reverse([Cabeza|Resto], R2):- my_reverse(Resto, R), /* Si fuese cierto en R tendriamos Resto en orden inverso */
 	append(R, [Cabeza], R2).
 
 /*
@@ -61,4 +61,4 @@ my_append(?Lista1, ?Lista2, ?Resultado)
 /* Probemos construyendo la induccion con la primera variable (la 2º siempre igual) */
 my_append([], List2, List2).
 my_append([Cab|Resto], List2, [Cab|R]):-
-	my_append(Resto, List2, R). //Si fuese verdad en R tenemos concatenado Resto y List2
+	my_append(Resto, List2, R). /* Si fuese verdad en R tenemos concatenado Resto y List2 */
