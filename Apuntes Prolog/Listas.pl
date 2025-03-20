@@ -36,7 +36,18 @@ elemento_n([Cab|Resto], N, R):-
 Comprime(Lista, R). Es cierto si R unifica con una lista de la siguiente forma:
 	Comprime([a,a,a,b,b,c,a], R). es R=[(a,3),(b,2),(c,1),(a,1)].
 */
+comprime([], []).
 
+comprime([Elem], [(Elem,1)]).
+
+/* Caso de que los 2 primeros sean iguales. Pongo cab1, cab1 para decir que son iguales. Como empezamos
+con 2 elementos necesitamos hacer un caso base por si la lista tiene 1 solo elemento*/
+comprime([Cab1, Cab1|Resto], [(Cab1,N2)|R]):-
+	comprime([Cab1|Resto], [(Cab1,N)|R]), N2 is N+1.  /* Si es cierto en R tengo la solucion final pero en el primer elemento tenemos n-1 repeticiones */
+
+/* Caso cuando los 2 primeros son diferentes */
+ comprime([Cab1, Cab2|Resto], [(Cab1,1)|R]):- Cab1 \= Cab2,
+	comprime([Cab2|Resto], R).
 
 /*
 my_reverse(?Lista, ?Resultado) es cierto si resultado unifica con una lista que contiene  los elementos
