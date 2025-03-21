@@ -12,8 +12,8 @@ sudoku(Rows) :-
         maplist(all_distinct, Rows),                    /* Haciendo que todas las filas de la matriz sean distintas */
         transpose(Rows, Columns),                       /* Transpuesta */ 
         maplist(all_distinct, Columns),                 /* Ahora comprueba que cada columna es diferente tmb */
-        Rows = [As,Bs,Cs,Ds,Es,Fs,Gs,Hs,Is],
-        blocks(As, Bs, Cs),
+        Rows = [As,Bs,Cs,Ds,Es,Fs,Gs,Hs,Is],            /* Da nombres a todas las filas */
+        blocks(As, Bs, Cs),                             /* Crea los bloques de 3x3 con blocks */
         blocks(Ds, Es, Fs),
         blocks(Gs, Hs, Is).
 
