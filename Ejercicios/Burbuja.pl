@@ -16,6 +16,8 @@ No estamos ordenando sino viendo si la lista ya esta ordenada
 %Lista vacia
 ordenada([]).
 %Lista de un elemento
-ordenado([_]).
-%Lista de 2 o mas elementos
-ordenada([Cab1, Cab2|Resto]):- Cab1 < Cab2, ordenada([Cab2|Resto]).
+ordenada([_]).
+%Lista de dos elementos o mas
+ordenada([Cab1, Cab2|Resto]) :- 
+	Cab1<Cab2, 
+	ordenada([Cab2|Resto]).
