@@ -1,4 +1,7 @@
+-----------------------------------------------------------------------------------------
 ARBOLES BINARIOS
+-----------------------------------------------------------------------------------------
+
 Supon un arbol con nodo raiz 1 y dos hijos (2 - izq, 3 - der):
   a(1,a(2,nil,nil),a(3,nil,nil) -> Es su estructura en prolog
     * nil -> nulo, no tiene hijo.
@@ -7,3 +10,33 @@ De forma teorica -> a(etiquetaNodo, HijoIzq, HijoDer) mejor construyelo poco a p
   1. a(1, a(), a()) -> Nodo raiz 1
   2. a(1, a(2, nil, nil), a()) -> Hijo izq 1
   3. a(1, a(2, nil, nil), a(3, nil, nil)) -> Hijo der 1
+
+-----------------------------------------------------------------------------------------
+ARBOLES GENERICOS
+-----------------------------------------------------------------------------------------
+
+- Representacion:
+  Se pone la etiqueta y tendrá un unico hijo que será una lista de arboles genericos:
+    a(1, [a(2, []), a(3, []), ...]).
+    a(1, [a(2, [a(4, [])]), a(3, [])]).
+    ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
