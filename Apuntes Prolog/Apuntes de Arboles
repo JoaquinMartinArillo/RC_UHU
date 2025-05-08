@@ -1,0 +1,4 @@
+ARBOLES BINARIOS
+Supon un arbol con nodo raiz 1 y dos hijos (2 - izq, 3 - der):
+  a(1,a(2,nil,nil),a(3,nil,nil) -> Es su estructura en prolog
+    * nil -> nulo, no tiene hijo
