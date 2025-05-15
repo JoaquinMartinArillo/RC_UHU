@@ -1,0 +1,52 @@
+Se declara de la forma:
+g([ListVert], [ListAristas]).
+  g([a, b, c, d], [a(a,b), a(a,c), a(c,d), a(c,b)]).
+
+HAY QUE TENER EN CUENTA SI SE TRATA DE UN GRAFO DIRIGIDO O NO
+
+- Principalmente buscaremos caminos entre 2 vertices:
+    Representacion de un camino:
+      1. Lista de vertices pasados.
+      2. Lista de aristas pasadas.
+
+    Lista de visitados:
+      1. Lista de vertices.
+      2. Lista de aristas.
+
+    Tipo Grafo:
+      1. Dirigido.
+      2. No Dirigido.
+
+    Ejemplo camino: Ini -> Fin
+      1. La idea es pasar desde inicio a otro vertice (tmp) y desde este, un camino al final (ahi esta la Recursividad/Induccion)
+      CASOS BASE -> Ya estoy en el punto final: camino(Grafo, Ini, Ini, ).
+                 -> Hay una arista directa entre Ini y Fin: camino(Grafo, Ini, Fin, ):- arista(Ini, Fin, grafo).
+
+      * ES IMPORTANTE CONTROLAR POR DONDE HEMOS PASADO YA QUE PROLOG BUSCA TODOS LOS CASOS POR LO QUE SI HAY UN CICLO LO REPETIRA INF
+
+      Ejemplo camino -> Lista de vertices, VerticesVisitados, N0 -> Ini=Fin
+        camino(G(vertices,aristas), Ini, Fin, visitados, camino)
+
+        1. Caso Base -> (visitados no nos importa porque sirve para evitar ciclos)
+        camino(_, Ini, Ini, _, [Ini]).
+
+        2. Caso recursivo ->
+        camino(g(vert, aris), Ini, Fin, Visitados, [Ini|Cam]):-
+          conectado(g(vert, aris), Ini, TMP),
+          camino(g(vert, aris), TMP, Fin, [TMP|Visitados], Cam).      %NO AÑADIMOS INI PORQUE YA DEBERIA DE ESTAR EN VISITADOS
+
+        % USAREMOS AMBOS SI ES UN GRAFO NO DIRIGIDO, EN CASO CONTRARIO SOLO EL PRIMERO
+        conectados(g(_, aris), Ini, Fin):-
+          member(a(Ini,Fin), aris).      %ESTE METODO YA EXISTE        
+        conectados(g(_, aris), Ini, Fin):-
+          member(a(Fin,Ini), aris).
+
+
+
+
+
+
+
+
+
+
