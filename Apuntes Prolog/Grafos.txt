@@ -33,6 +33,7 @@ HAY QUE TENER EN CUENTA SI SE TRATA DE UN GRAFO DIRIGIDO O NO
         2. Caso recursivo ->
         camino(g(vert, aris), Ini, Fin, Visitados, [Ini|Cam]):-
           conectado(g(vert, aris), Ini, TMP),
+          \+ member(TMP, Visitados),
           camino(g(vert, aris), TMP, Fin, [TMP|Visitados], Cam).      %NO AÑADIMOS INI PORQUE YA DEBERIA DE ESTAR EN VISITADOS
 
         % USAREMOS AMBOS SI ES UN GRAFO NO DIRIGIDO, EN CASO CONTRARIO SOLO EL PRIMERO
