@@ -1,0 +1,17 @@
+- DEFINICION DE UN ESTADO
+  estado(...) -> ... depende del puzzle a resolver, PE: en el ajedrez seria una matriz 8x8
+
+
+
+EJEMPLO MISIONEROS-CANIBALES 
+Tenemos 3 misioneros, 3 canibales y una balsa en un lado del rio y queremos pasar a las poblaciones
+al otro lado del rio, en la balsa caben 2 y no podemos tener en un lado a mas canibales que misioneros.
+
+  - Estado:
+    estado(MI, CI, Balsa). %Representa el num de cada uno en la izquerda. Sabiendo cuantos hay en la izq se cuantos hay en la der
+  - Definicion de estado inicial y final
+    Ei = e(3,3,der).
+    Ef = e(0,0,_).
+  - Definicion de movimientos (acciones/transiciones)
+    pasar(nombre, EAnterior, EPosterior). -> tiene un estado anterior y posterior al movimiento que definimos
+  - Obtener el camino del Ei al Ef
