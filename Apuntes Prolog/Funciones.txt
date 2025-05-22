@@ -12,3 +12,5 @@
 - Para quitar un elemento de una lista usamos: "|"
 
 *Siempre declarar las restricciones antes que las llamadas recursivas
+
+- setof(template, goal, set) -> Nos da todas las soluciones de un objetivo segun template sin repetir en set.
