@@ -84,34 +84,45 @@ slot_quotient(S, Q) :-
 
 % Restriccion de clases acopladas (los valores de las sesiones deben ser seguidas) -> Sesion 2 y 3 juntas => 2 = 6, 3 = 7 PE
 slots_couplings(Slots, F-S) :-
-        nth0(F, Slots, S1),
+        nth0(F, Slots, S1), % nth0 te da el index (F) que corresponde al elemento (S1) en una lista (Slots)
         nth0(S, Slots, S2),
         S2 #= S1 + 1.
 
-% Ni idea
+% Elimina de la lista el valor en el index indicado en Ws
 list_without_nths(Es0, Ws, Es) :-
         phrase(without_(Ws, 0, Es0), Es).
+
+% Comprobar que son todos son diferentes en F
+all_diff_from(Vs, F) :- maplist(#\=(F), Vs).
 
 % Restricciones de asignatura con su slot/array
 constrain_subject(req(Class,Subj,_Teacher,_Num)-Slots) :-
         strictly_ascending(Slots), % break symmetry            % Num del array en ascendente
-        maplist(slot_quotient, Slots, Qs0),                    % Cociente a todos los slot del horario (1-7)
+        maplist(slot_quotient, Slots, Qs0),                    % Cociente a todos los slot del horario (Dar un num a cada col (dia) del horario)
         findall(F-S, coupling(Class,Subj,F,S), Cs),            % Encuentra las asig que ocupan mas de 1 h = Cs (Par F-S -> 2 sesiones seguidas)
         maplist(slots_couplings(Slots), Cs),                   % Aplica las restriccion de sesiones seguidas a Cs
-        pairs_values(Cs, Seconds0),                            % Nos quedamos con el valor del par F-S ?
+        pairs_values(Cs, Seconds0),                            % Nos quedamos con el valor de los pares de Cs (clases acopladas)
         sort(Seconds0, Seconds),                               % Ordenamos los valores de los pares
-        list_without_nths(Qs0, Seconds, Qs),                   % 
-        strictly_ascending(Qs).                                % Ordenar ascendente a Qs (No se lo que es)
+        list_without_nths(Qs0, Seconds, Qs),                   % Elimina los 2 para cumplir la restriccion 
+        strictly_ascending(Qs).                                % Ordenar ascendente a Qs (clases acopladas)
 
 
 % Restricciones del profesor en sus asignaturas
 constrain_teacher(Rs, Teacher) :-
-        tfilter(teacher_req(Teacher), Rs, Sub),                % Fi
+        tfilter(teacher_req(Teacher), Rs, Sub),                % Filtrar los profesores (no sabemos como se hace)
         pairs_slots(Sub, Vs),                                  % Obtener el horario del profesor
         all_different(Vs),                                     % Asegurar que el horario no se solapa
-        findall(F, teacher_freeday(Teacher, F), Fs),           % 
-        maplist(slot_quotient, Vs, Qs),
-        maplist(all_diff_from(Qs), Fs).
+        findall(F, teacher_freeday(Teacher, F), Fs),           % Buscar los dias libres del profe
+        maplist(slot_quotient, Vs, Qs),                        % Sacamos los dias que trabajará
+        maplist(all_diff_from(Qs), Fs).                        % Todos las clases puestas son distintas al dia libre
+
+% Restricciones de las clases
+constrain_class(Rs, Class) :-
+        tfilter(class_req(Class), Rs, Sub),
+        pairs_slots(Sub, Vs),
+        all_different(Vs),
+        findall(S, class_freeslot(Class,S), Frees),           % Sacar las horas libres
+        maplist(all_diff_from(Vs), Frees).                    % Comprobar que todos los slots del horario son distintos a las horas marcadas como libres
 
 
 
