@@ -124,7 +124,16 @@ constrain_class(Rs, Class) :-
         findall(S, class_freeslot(Class,S), Frees),           % Sacar las horas libres
         maplist(all_diff_from(Vs), Frees).                    % Comprobar que todos los slots del horario son distintos a las horas marcadas como libres
 
+% A CONTINUACION TODO LO NECESARIO PARA MOSTRAR POR PANTALLA EL HORARIO
 
+days_variables(Days, Vs) :-
+        slots_per_week(SPW),
+        slots_per_day(SPD),
+        NumDays #= SPW // SPD,
+        length(Days, NumDays),
+        length(Day, SPD),
+        maplist(same_length(Day), Days),
+        append(Days, Vs).
 
 
 
