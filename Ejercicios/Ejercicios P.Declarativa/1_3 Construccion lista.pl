@@ -1,0 +1,1 @@
+cons(X, Lista, [X|Lista]).
